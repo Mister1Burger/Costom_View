@@ -17,6 +17,15 @@ import java.util.List;
 
 public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.ElementViewHolder> {
 
+    public ResViewAdapter(ArrayList<Object> objects, ElementListner listener) {
+    }
+
+    public ResViewAdapter(List<Element> elements) {
+    }
+
+    public ResViewAdapter(List<Element> elements, ResViewAdapter resViewAdapter) {
+    }
+
     public static class ElementViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView tv_name;
@@ -33,9 +42,9 @@ public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.Element
     }
 
     List<Element> elements;
-    OnItemClic listener;
+    ElementListner listener;
 
-    ResViewAdapter(List<Element> elements, OnItemClic listener){
+    ResViewAdapter(List<Element> elements, ElementListner listener){
         this.elements = elements;
         this.listener = listener;
     }
@@ -56,7 +65,7 @@ public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.Element
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.ontemClick(elements.get(position).info);
+                listener.getElement(elements.get(position).info);
             }
         });
     }
@@ -66,8 +75,5 @@ public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.Element
     public int getItemCount() {
         return elements.size();
     }
-
-    public interface OnItemClic{
-        void ontemClick(String info);
-    }
+    
 }
