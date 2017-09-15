@@ -6,4 +6,5 @@ package com.example.kapusta.elements;
 
 public interface ElementListner  {
     void getElement (String info);
+
 }

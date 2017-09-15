@@ -18,12 +18,17 @@ public class MainActivity extends AppCompatActivity  {
 //    @BindView(R2.id.rv)
     RecyclerView resView;
 
-    private List<Element> elements;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment, new FirstFragment())
+                .commit();
+
+
     }
 //        ButterKnife.bind(this);
 

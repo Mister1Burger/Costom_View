@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by java on 13.09.2017.
@@ -44,6 +45,12 @@ public class FirstFragment extends Fragment{
                 .doOnNext(elements -> elements.add(new Element("Lithium", "soft, silvery-white alkali metal", 3, R.drawable.lithium)))
                 .doOnNext(elements -> elements.add(new Element("Aluminium", "silvery-white, soft, nonmagnetic, ductile metal", 13, R.drawable.aluminium)))
                 .doOnNext(elements -> elements.add(new Element("Titanium", "lustrous transition metal with a silver color, low density, and high strength", 22, R.drawable.titanium)))
+                .flatMap(Observable::fromIterable)
+                .doOnNext(adapter::add)
+                .toList()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(elements -> Log.d("TAG", String.valueOf(elements)),throwable -> Log.i("TAG", "exeption") );
+
 
         super.onViewCreated(view, savedInstanceState);
     }
