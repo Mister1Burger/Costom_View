@@ -69,7 +69,8 @@ public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.Element
             @Override
             public void onClick(View v) {
                 listener.getElement(elements.get(position).info);
-                showDialog(String.valueOf(listener));
+
+                
 
             }
         });
@@ -77,21 +78,7 @@ public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.Element
     public void add(Element element) {
         elements.add(element);
     }
-    private void showDialog(String s){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity, R.style.AppCompatAlertDialogStyle);
-        builder.setTitle("Info")
-                .setMessage(s)
-                .setIcon(R.drawable.info)
-                .setCancelable(false)
-                .setNegativeButton("ОК",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
+
 
 
     @Override

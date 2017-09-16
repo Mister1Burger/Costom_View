@@ -1,7 +1,9 @@
 package com.example.kapusta.elements;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,6 +37,7 @@ public class FirstFragment extends Fragment{
 
         ResViewAdapter adapter = new ResViewAdapter(elements, new ResViewAdapter(new ArrayList<Element>(), (ElementListner) info -> {
             Log.d("TAG", String.valueOf(info));
+            showDialog(info);
         }));
         resView.setAdapter(adapter);
 
@@ -59,5 +62,20 @@ public class FirstFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+    private void showDialog(String s){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AppCompatAlertDialogStyle);
+        builder.setTitle("Info")
+                .setMessage(s)
+                .setIcon(R.drawable.info)
+                .setCancelable(false)
+                .setNegativeButton("ОК",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

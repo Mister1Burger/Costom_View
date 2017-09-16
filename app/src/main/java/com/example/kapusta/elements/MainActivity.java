@@ -35,21 +35,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-    private void showDialog(String s){
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Info")
-                .setMessage(s)
-                .setIcon(R.drawable.info)
-                .setCancelable(false)
-                .setNegativeButton("ОК",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
+
 
 
 }
