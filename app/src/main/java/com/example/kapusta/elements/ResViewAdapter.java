@@ -20,14 +20,7 @@ import java.util.List;
 
 public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.ElementViewHolder> {
 
-    public ResViewAdapter(ArrayList<Object> objects, ElementListner listener) {
-    }
 
-    public ResViewAdapter(List<Element> elements) {
-    }
-
-    public ResViewAdapter(List<Element> elements, ResViewAdapter resViewAdapter) {
-    }
 
     public static class ElementViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
@@ -75,15 +68,16 @@ public class ResViewAdapter extends  RecyclerView.Adapter<ResViewAdapter.Element
             }
         });
     }
-    public void add(Element element) {
-        elements.add(element);
-    }
-
-
 
     @Override
     public int getItemCount() {
-        return elements.size();
+        return 0;
     }
-    
-}
+
+    public void add(Element element) {
+        elements.add(element);
+        notifyDataSetChanged();
+    }}
+
+
+

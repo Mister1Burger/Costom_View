@@ -35,10 +35,10 @@ public class FirstFragment extends Fragment{
         resView.setLayoutManager(llm);
 
 
-        ResViewAdapter adapter = new ResViewAdapter(elements, new ResViewAdapter(new ArrayList<Element>(), (ElementListner) info -> {
+        ResViewAdapter adapter = new ResViewAdapter(elements,  (ElementListner) info -> {
             Log.d("TAG", String.valueOf(info));
             showDialog(info);
-        }));
+        });
         resView.setAdapter(adapter);
 
 
@@ -61,7 +61,8 @@ public class FirstFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.recycler, container, false);
+        return view;
     }
     private void showDialog(String s){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AppCompatAlertDialogStyle);
